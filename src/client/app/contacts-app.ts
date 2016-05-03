@@ -5,45 +5,30 @@ import {Component} from 'angular2/core';
 import {ContactHeaderComponent} from './contact-header-component/contact-header-component';
 import {Contact} from './models/contact';
 import {ContactsService} from './contacts-service/contacts-service';
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
+import {ContactsListComponent} from './contacts-list-component/contacts-list-component';
 
 @Component({
     selector: 'contacts-app',
     styleUrls: ['app/contacts-app.css'],
-    directives: [ContactHeaderComponent],
-    providers: [ContactsService],
+    directives: [ContactHeaderComponent, ROUTER_DIRECTIVES],
+    providers: [ContactsService, ROUTER_PROVIDERS],
     template: `
-<contact-header-component></contact-header-component>
-    <ul class="collection">
-        <li *ngFor="#contact of contacts" class="collection-item avatar">
-            <img [src]="contact.image" alt="" class="circle">
-            <span class="title">{{contact.name}}</span>
-        </li>
-    </ul>`
+    <contact-header-component></contact-header-component>
+    <router-outlet></router-outlet>
+`
 })
-export class ContactsApp {    
-    contacts:Array<Contact>;
-    
-    constructor(contactsService: ContactsService){
-        this.contacts = contactsService.getContacts();
+@RouteConfig([
+    {
+        path: '/',
+        component: ContactsListComponent,
+        name: 'ContactList'
+    }    
+])
+export class ContactsApp{    
+   
+    constructor(){
+        //syntactic sugar allows us to not need to explicitly assign
+        //contactsService for use in ngOnInit
     }
-    /* 
-        Note: notice that block scope in ngFor syntax prevents problems
-        if the below is commented out.
-     */
-    // contact:Contact = {
-    //     id: 7,
-    //     name: 'Diana Ellis',
-    //     email: '',
-    //     phone: '',
-    //     birthday: '',
-    //     website: '',
-    //     image: '/assets/images/7.jpg',
-    //     address: {
-    //         street: '6554 park lane',
-    //         zip: '43378',
-    //         city: 'Rush',
-    //         country: 'United States'
-    //     }
-    // }
-
 }
