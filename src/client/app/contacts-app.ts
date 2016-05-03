@@ -7,4 +7,9 @@ import {Component} from 'angular2/core';
 })
 export class ContactsApp {
     constructor() {}
+    
+    //by default this is public; must be explicitly set to private to hide
+    greatTime() {
+        return "hi";
+    }
 }
