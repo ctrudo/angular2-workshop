@@ -4,12 +4,13 @@ import {Component} from 'angular2/core';
 // 'no extension' systemjs determines this and default is '.js'
 import {ContactHeaderComponent} from './contact-header-component/contact-header-component';
 import {Contact} from './models/contact';
-import {CONTACT_DATA} from './data/contact-data';
+import {ContactsService} from './contacts-service/contacts-service';
 
 @Component({
     selector: 'contacts-app',
     styleUrls: ['app/contacts-app.css'],
     directives: [ContactHeaderComponent],
+    providers: [ContactsService],
     template: `
 <contact-header-component></contact-header-component>
     <ul class="collection">
@@ -19,7 +20,12 @@ import {CONTACT_DATA} from './data/contact-data';
         </li>
     </ul>`
 })
-export class ContactsApp {
+export class ContactsApp {    
+    contacts:Array<Contact>;
+    
+    constructor(contactsService: ContactsService){
+        this.contacts = contactsService.getContacts();
+    }
     /* 
         Note: notice that block scope in ngFor syntax prevents problems
         if the below is commented out.
@@ -39,5 +45,5 @@ export class ContactsApp {
     //         country: 'United States'
     //     }
     // }
-    contacts:Array<Contact> = CONTACT_DATA
+
 }
