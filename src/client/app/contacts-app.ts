@@ -20,6 +20,10 @@ import {CONTACT_DATA} from './data/contact-data';
     </ul>`
 })
 export class ContactsApp {
+    /* 
+        Note: notice that block scope in ngFor syntax prevents problems
+        if the below is commented out.
+     */
     // contact:Contact = {
     //     id: 7,
     //     name: 'Diana Ellis',
