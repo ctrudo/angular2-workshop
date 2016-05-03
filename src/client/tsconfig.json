@@ -20,6 +20,8 @@
     "app.ts",
     "typings.d.ts",
     "app/contacts-app.ts",
-    "app/models/contact.ts"
+    "app/models/contact.ts",
+    "app/data/contact-data.ts",
+    "app/data/countries-data.ts"
   ]
 }
