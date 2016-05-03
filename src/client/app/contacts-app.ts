@@ -13,7 +13,7 @@ import {CONTACT_DATA} from './data/contact-data';
     template: `
 <contact-header-component></contact-header-component>
     <ul class="collection">
-        <li *ngFor="#contact of contacts"   class="collection-item avatar">
+        <li *ngFor="#contact of contacts" class="collection-item avatar">
             <img [src]="contact.image" alt="" class="circle">
             <span class="title">{{contact.name}}</span>
         </li>
