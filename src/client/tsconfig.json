@@ -19,6 +19,7 @@
   "files": [
     "app.ts",
     "typings.d.ts",
-    "app/contacts-app.ts"
+    "app/contacts-app.ts",
+    "app/models/contact.ts"
   ]
 }
